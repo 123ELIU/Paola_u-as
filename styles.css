@@ -63,8 +63,9 @@ ul {
 }
 
 .section {
-    padding: 100px 0;
+    padding: 60px 0; /* reduced global vertical spacing for a tighter layout */
     position: relative;
+    scroll-margin-top: 70px;
 }
 
 /* ==================== PRELOADER ==================== */
@@ -271,7 +272,7 @@ ul {
     align-items: center;
     position: relative;
     overflow: hidden;
-    padding-top: 80px;
+    padding-top: 100px; /* tuned to leave space for fixed header without pushing content too far down */
     background: var(--gradient-2);
 }
 
@@ -330,11 +331,16 @@ ul {
     z-index: 1;
 }
 
+/* Give left side more room on wider screens so the headline expands */
+.hero-content {
+    grid-template-columns: 1fr; /* stack like mobile on all viewports per user's request */
+}
+
 .hero-title {
     font-family: var(--font-secondary);
-    font-size: 56px;
+    font-size: clamp(34px, 6vw, 72px); /* responsive: behaves like mobile on desktop too */
     font-weight: 800;
-    line-height: 1.2;
+    line-height: 1.05;
     margin-bottom: 20px;
     color: var(--dark-color);
 }
@@ -428,6 +434,7 @@ ul {
 
 .hero-image {
     position: relative;
+    margin-top: 30px; /* add spacing when stacked */
 }
 
 .floating-card {
@@ -436,6 +443,9 @@ ul {
     overflow: hidden;
     box-shadow: var(--shadow-xl);
     animation: floatImage 6s infinite ease-in-out;
+    width: 100%;
+    max-width: 720px; /* limit on large screens */
+    margin: 0 auto; /* center when stacked */
 }
 
 @keyframes floatImage {
@@ -447,6 +457,25 @@ ul {
     width: 100%;
     height: auto;
     display: block;
+    max-height: 60vh; /* prevent image from taking entire viewport height */
+    object-fit: cover;
+}
+
+/* Make floating card wider on mid-large screens but keep limit */
+@media (min-width: 1200px) {
+    .floating-card {
+        max-width: 960px;
+    }
+}
+
+@media (max-width: 768px) {
+    .floating-card {
+        max-width: 100%;
+        border-radius: 20px;
+    }
+    .floating-card img {
+        max-height: 50vh;
+    }
 }
 
 .floating-badge {
@@ -669,6 +698,7 @@ ul {
 /* ==================== SERVICES SECTION ==================== */
 .services {
     background: var(--light-gray);
+    padding-bottom: 40px; /* reduce bottom space to bring gallery closer */
 }
 
 .services-grid {
@@ -763,6 +793,7 @@ ul {
 /* ==================== GALLERY SECTION ==================== */
 .gallery {
     background: white;
+    padding-top: 60px; /* reduce top padding to tighten gap after services */
 }
 
 .gallery-grid {
@@ -1038,7 +1069,7 @@ ul {
 .footer {
     background: var(--dark-color);
     color: white;
-    padding: 60px 0 30px;
+    padding: 40px 0 20px; /* reduced footer vertical space */
     text-align: center;
 }
 
@@ -1110,6 +1141,13 @@ ul {
     .social-sidebar {
         display: none;
     }
+    .hero {
+        padding-top: 100px; /* reduce extra space on mobile so hero isn't pushed too far down */
+    }
+}
+
+@media (min-width: 1400px) {
+    /* Keep stacked layout even on very wide screens per user preference; increase title max via clamp above */
 }
 
 @media (max-width: 768px) {
