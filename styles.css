@@ -505,7 +505,7 @@ ul {
 .social-sidebar {
     position: fixed;
     right: 30px;
-    top: 50%;
+    top: 35%;
     transform: translateY(-50%);
     z-index: 100;
     display: flex;
@@ -535,6 +535,10 @@ ul {
 }
 
 .social-link.twitter {
+    background: #000000;
+}
+
+.social-link.tiktok {
     background: #000000;
 }
 
