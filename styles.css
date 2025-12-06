@@ -810,6 +810,7 @@ ul {
     transition: all var(--transition-fast);
     position: relative;
     height: 400px;
+    cursor: pointer;
 }
 
 .gallery-item:hover {
