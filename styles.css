@@ -869,6 +869,15 @@ ul {
     transform: translateY(0);
 }
 
+/* Support touch devices: show overlay when item has .is-active class (toggled via JS) */
+.gallery-item.is-active .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-item.is-active .gallery-content {
+    transform: translateY(0);
+}
+
 .gallery-content h4 {
     font-size: 22px;
     font-weight: 700;
@@ -1145,7 +1154,14 @@ ul {
     }
     
     .social-sidebar {
-        display: none;
+        /* Mostrar la barra social también en pantallas pequeñas
+           y reposicionarla más cerca del fondo para no bloquear contenido */
+        display: flex;
+        right: 12px;
+        top: auto;
+        bottom: 120px;
+        transform: none;
+        z-index: 100;
     }
     .hero {
         padding-top: 100px; /* reduce extra space on mobile so hero isn't pushed too far down */
