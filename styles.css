@@ -716,6 +716,7 @@ ul {
     box-shadow: var(--shadow-sm);
     position: relative;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .service-card::before {
